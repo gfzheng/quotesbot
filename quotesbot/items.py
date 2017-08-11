@@ -12,9 +12,9 @@ from scrapy.loader.processors import MapCompose, TakeFirst, Join
 class QuotesbotItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    name = Field()
-    description = Field()
-    link = Field()
+    text = Field()
+    author = Field()
+    tag = Field()
     crawled = Field()
     spider = Field()
     url = Field()
