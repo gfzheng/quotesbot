@@ -5,10 +5,22 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
+from scrapy.loader import ItemLoader
+from scrapy.loader.processors import MapCompose, TakeFirst, Join
 
-
-class QuotesbotItem(scrapy.Item):
+class QuotesbotItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    name = Field()
+    description = Field()
+    link = Field()
+    crawled = Field()
+    spider = Field()
+    url = Field()
+
+class QuotesbotLoader(ItemLoader):
+    default_item_class = QuotesbotItem
+    default_input_processor = MapCompose(lambda s: s.strip())
+    default_output_processor = TakeFirst()
+    description_out = Join()
