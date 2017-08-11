@@ -98,7 +98,6 @@ DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 # Store scraped item in redis for post-processing.
 ITEM_PIPELINES = {
-        'scrapy_redis.pipelines.RedisPipeline': 300
+        'qutoesbot.pipelines.QuotesbotPipeline': 300,
+        'scrapy_redis.pipelines.RedisPipeline': 400
 }
-
-
