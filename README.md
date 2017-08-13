@@ -32,7 +32,7 @@ You can learn more about the spiders by going through the
 [Scrapy Tutorial](http://doc.scrapy.org/en/latest/intro/tutorial.html).
 
 
-## Running the spiders
+## Running the basic spiders
 
 You can run a spider using the `scrapy crawl` command, such as:
 
@@ -41,3 +41,14 @@ You can run a spider using the `scrapy crawl` command, such as:
 If you want to save the scraped data to a file, you can pass the `-o` option:
     
     $ scrapy crawl toscrape-css -o quotes.json
+
+## Running the distributed spiders
+
+You must install the redis-server first, run it with 'redis-server', then run 'redis-cli' to connect to it.
+
+You can run a distributed spider using the 'scrapy runspider' command, with option '-a domain=...' to restrict the domains to crawl.
+
+    $ scrapy runspider -a domain=quotes.toscrape.com ./spiders/toscrape-crawl.py
+
+
+
