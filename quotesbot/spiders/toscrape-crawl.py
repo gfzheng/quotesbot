@@ -9,7 +9,7 @@ from scrapy_redis.spiders import RedisCrawlSpider
 class ToScrapeSpiderCrawl(RedisCrawlSpider):
     """Spider that reads urls from redis queue (toscrawl:start_urls)."""
     name = 'toscrape-crawl'
-    redis_key = 'toscrawl:start_urls'
+    redis_key = 'toscrape:start_urls'
 
     rules = (
         # follow all links
@@ -18,6 +18,7 @@ class ToScrapeSpiderCrawl(RedisCrawlSpider):
 
     def __init__(self, *args, **kwargs):
         # Dynamically define the allowed domains list.
+        # scrapy runspider -a domain=quotes.toscrape.com ./spiders/toscrape-crawl.py
         domain = kwargs.pop('domain', '')
         self.allowed_domains = filter(None, domain.split(','))
         super(ToScrapeSpiderCrawl, self).__init__(*args, **kwargs)
